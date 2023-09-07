@@ -21,101 +21,102 @@ def challenge_1():
                 "template": template_body,
                 "parameters": {
                     "location": {
-                    "value": "eastus"
-                },
-                "networkInterfaceName": {
-                    "value": "cdca-mgmt753"
-                },
-                "networkSecurityGroupName": {
-                    "value": "CDCA-MGMT-nsg"
-                },
-                "networkSecurityGroupRules": {
-                    "value": [
-                        {
-                            "name": "SSH",
-                            "properties": {
-                                "priority": 300,
-                                "protocol": "TCP",
-                                "access": "Allow",
-                                "direction": "Inbound",
-                                "sourceAddressPrefix": "*",
-                                "sourcePortRange": "*",
-                                "destinationAddressPrefix": "*",
-                                "destinationPortRange": "22"
+                        "value": "eastus"
+                    },
+                    "networkInterfaceName": {
+                        "value": "cdca-mgmt753"
+                    },
+                    "networkSecurityGroupName": {
+                        "value": "CDCA-MGMT-nsg"
+                    },
+                    "networkSecurityGroupRules": {
+                        "value": [
+                            {
+                                "name": "SSH",
+                                "properties": {
+                                    "priority": 300,
+                                    "protocol": "TCP",
+                                    "access": "Allow",
+                                    "direction": "Inbound",
+                                    "sourceAddressPrefix": "*",
+                                    "sourcePortRange": "*",
+                                    "destinationAddressPrefix": "*",
+                                    "destinationPortRange": "22"
+                                }
                             }
-                        }
-                    ]
-                },
-                "subnetName": {
-                    "value": "default"
-                },
-                "virtualNetworkName": {
-                    "value": "CDCA-MGMT-vnet"
-                },
-                "addressPrefixes": {
-                    "value": [
-                        "10.0.0.0/16"
-                    ]
-                },
-                "subnets": {
-                    "value": [
-                        {
-                            "name": "default",
-                            "properties": {
-                                "addressPrefix": "10.0.0.0/24"
+                        ]
+                    },
+                    "subnetName": {
+                        "value": "default"
+                    },
+                    "virtualNetworkName": {
+                        "value": "CDCA-MGMT-vnet"
+                    },
+                    "addressPrefixes": {
+                        "value": [
+                            "10.0.0.0/16"
+                        ]
+                    },
+                    "subnets": {
+                        "value": [
+                            {
+                                "name": "default",
+                                "properties": {
+                                    "addressPrefix": "10.0.0.0/24"
+                                }
                             }
-                        }
-                    ]
+                        ]
+                    },
+                    "publicIpAddressName": {
+                        "value": "CDCA-MGMT-ip"
+                    },
+                    "publicIpAddressType": {
+                        "value": "Static"
+                    },
+                    "publicIpAddressSku": {
+                        "value": "Standard"
+                    },
+                    "pipDeleteOption": {
+                        "value": "Detach"
+                    },
+                    "virtualMachineName": {
+                        "value": "CDCA-MGMT"
+                    },
+                    "virtualMachineComputerName": {
+                        "value": "CDCA-MGMT"
+                    },
+                    "virtualMachineRG": {
+                        "value": "CDCA-RG"
+                    },
+                    "osDiskType": {
+                        "value": "Premium_LRS"
+                    },
+                    "osDiskDeleteOption": {
+                        "value": "Delete"
+                    },
+                    "virtualMachineSize": {
+                        "value": "Standard_B1ms"
+                    },
+                    "nicDeleteOption": {
+                        "value": "Detach"
+                    },
+                    "adminUsername": {
+                        "value": "student"
+                    },
+                    "adminPassword": {
+                        "value": password
+                    },
+                    "securityType": {
+                        "value": "TrustedLaunch"
+                    },
+                    "secureBoot": {
+                        "value": True
+                    },
+                    "vTPM": {
+                        "value": True
+                    }
                 },
-                "publicIpAddressName": {
-                    "value": "CDCA-MGMT-ip"
-                },
-                "publicIpAddressType": {
-                    "value": "Static"
-                },
-                "publicIpAddressSku": {
-                    "value": "Standard"
-                },
-                "pipDeleteOption": {
-                    "value": "Detach"
-                },
-                "virtualMachineName": {
-                    "value": "CDCA-MGMT"
-                },
-                "virtualMachineComputerName": {
-                    "value": "CDCA-MGMT"
-                },
-                "virtualMachineRG": {
-                    "value": "CDCA-RG"
-                },
-                "osDiskType": {
-                    "value": "Premium_LRS"
-                },
-                "osDiskDeleteOption": {
-                    "value": "Delete"
-                },
-                "virtualMachineSize": {
-                    "value": "Standard_B1ms"
-                },
-                "nicDeleteOption": {
-                    "value": "Detach"
-                },
-                "adminUsername": {
-                    "value": "student"
-                },
-                "adminPassword": {
-                    "value": password
-                },
-                "securityType": {
-                    "value": "TrustedLaunch"
-                },
-                "secureBoot": {
-                    "value": True
-                },
-                "vTPM": {
-                    "value": True
-                }
-                }
+                "mode": DeploymentMode.incremental
             }
         }
     )
