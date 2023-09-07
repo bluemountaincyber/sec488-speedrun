@@ -5,34 +5,35 @@ def challenge_1():
     """Checks and, if necessary, adjusts AWS Account password policy"""
     print("Creating/adjusting password policy")
     client = boto3.client('iam')
+    count = 0
     try:
         response = client.get_account_password_policy()
+        if response['PasswordPolicy']['MinimumPasswordLength'] < 14:
+            print(warning("Minimum password length too short"))
+            count += 1
+        if response['PasswordPolicy']['RequireSymbols'] == False:
+            print(warning("Symbols are not required"))
+            count += 1
+        if response['PasswordPolicy']['RequireNumbers'] == False:
+            print(warning("Numbers are not required"))
+            count += 1
+        if response['PasswordPolicy']['RequireUppercaseCharacters'] == False:
+            print(warning("Uppercase characters are not required"))
+            count += 1
+        if response['PasswordPolicy']['RequireLowercaseCharacters'] == False:
+            print(warning("Lowercase characters are not required"))
+            count += 1
+        if response['PasswordPolicy']['ExpirePasswords'] == False:
+            print(warning("Password expiry not set"))
+            count += 1
+        if response['PasswordPolicy']['MaxPasswordAge'] < 90:
+            print(warning("Max password age too short"))
+            count += 1
+        if response['PasswordPolicy']['PasswordReusePrevention'] < 24:
+            print(warning("Password reuse threshold too low"))
+            count += 1
     except:
         print(warning("No password policy found"))
-    count = 0
-    if response['PasswordPolicy']['MinimumPasswordLength'] < 14:
-        print(warning("Minimum password length too short"))
-        count += 1
-    if response['PasswordPolicy']['RequireSymbols'] == False:
-        print(warning("Symbols are not required"))
-        count += 1
-    if response['PasswordPolicy']['RequireNumbers'] == False:
-        print(warning("Numbers are not required"))
-        count += 1
-    if response['PasswordPolicy']['RequireUppercaseCharacters'] == False:
-        print(warning("Uppercase characters are not required"))
-        count += 1
-    if response['PasswordPolicy']['RequireLowercaseCharacters'] == False:
-        print(warning("Lowercase characters are not required"))
-        count += 1
-    if response['PasswordPolicy']['ExpirePasswords'] == False:
-        print(warning("Password expiry not set"))
-        count += 1
-    if response['PasswordPolicy']['MaxPasswordAge'] < 90:
-        print(warning("Max password age too short"))
-        count += 1
-    if response['PasswordPolicy']['PasswordReusePrevention'] < 24:
-        print(warning("Password reuse threshold too low"))
         count += 1
     if count > 0:
         print(info("Adjusting password policy"))
