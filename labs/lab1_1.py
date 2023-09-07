@@ -3,12 +3,12 @@ from common import *
 
 def challenge_1():
     """Checks and, if necessary, adjusts AWS Account password policy"""
+    print("Creating/adjusting password policy")
     client = boto3.client('iam')
     try:
         response = client.get_account_password_policy()
     except:
-        print(failure("Could not acquire password policy"))
-        return
+        print(warning("No password policy found"))
     count = 0
     if response['PasswordPolicy']['MinimumPasswordLength'] < 14:
         print(warning("Minimum password length too short"))
