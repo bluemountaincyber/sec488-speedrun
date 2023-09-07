@@ -14,8 +14,8 @@ def failure(text):
 
 def warning(text):
     """Return warning status message"""
-    return YELLOW + "[+] " + NOCOLOR + text
+    return YELLOW + "[-] " + NOCOLOR + text
 
 def info(text):
     """Return info status message"""
-    return GRAY + "[+] " + NOCOLOR + text
+    return GRAY + "[ ] " + NOCOLOR + text
