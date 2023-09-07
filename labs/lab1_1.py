@@ -3,7 +3,7 @@ from common import *
 
 def challenge_1():
     """Checks and, if necessary, adjusts AWS Account password policy"""
-    print("Creating/adjusting password policy")
+    print("Creating/adjusting password policy...")
     client = boto3.client('iam')
     count = 0
     try:
@@ -59,7 +59,7 @@ def challenge_1():
     
 def challenge_3():
     """Checks and, if necessary creates the cloudtools user and adds to Admins group"""
-    print("Generating cloudtools user")
+    print("Generating cloudtools user...")
     client = boto3.client('iam')
     try:
         response = client.list_users()
@@ -81,7 +81,7 @@ def challenge_3():
     else:
         warning("cloudtools user already created")
     
-    print("Adding cloudtools user to Admins group")
+    print("Adding cloudtools user to Admins group...")
     try:
         response = client.list_groups_for_user(UserName='cloudtools')
     except:
@@ -102,7 +102,7 @@ def challenge_3():
     else:
         warning("cloudtools user already added to Admins group")
 
-    print("Creating access key for cloudtools user")
+    print("Creating access key for cloudtools user...")
     try:
         response = client.list_access_keys(UserName='cloudtools')
     except:
